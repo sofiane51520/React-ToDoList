@@ -1,0 +1,139 @@
+@import "../../Utilities/Utilities.scss";
+
+li {
+    list-style-position: inside;
+    border: 1px solid transparent;
+    margin-bottom: 0.75rem;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 1px 1px 12px #555;
+    border-radius: 10px;
+    height: 2.5rem;
+    text-align: center;
+    line-height: 2.5rem;
+    transition: ease-in-out 0.5s;
+    padding-left: 5px;
+  .value{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+    .display{
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      visibility: visible;
+
+      svg{
+        margin-left: 1em;
+      }
+      svg:hover{
+        color: $validColor;
+      }
+    }
+    .hide{
+      display: none !important;
+    }
+
+    .btnContainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .actionBtn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 1em;
+            height: 100%;
+            margin-right: 0.1em;
+            transition: ease-in 0.3s;
+        }
+        .deleteBtn:hover {
+           color: $errorColor;
+           transition: 1s;
+           transform: rotate(180deg);
+        }
+        .doneBtn:hover {
+            color: $validColor;
+         }
+        .editBtn:hover {
+             color: $warningColor;
+        }
+        .deleted {
+            transition: 2s linear;
+            transform: translateX(200px);
+        }
+        .done {
+            color: $validColor;
+        }
+    }
+}
+input {
+  outline: none;
+  border-radius: 10px;
+  border: none;
+  padding-left: 8px;
+  margin-right: 1em;
+  height: 25px;
+}
+li:hover {
+    transition: ease-in 0.1s;
+    transform: translateY(-3px) scale(1.02);
+}
+
+
+@keyframes jello {
+    11.1% {
+      transform: none
+    }
+    22.2% {
+      transform: skewX(-12.5deg) skewY(-12.5deg)
+    }
+    33.3% {
+      transform: skewX(6.25deg) skewY(6.25deg)
+    }
+    44.4% {
+      transform: skewX(-3.125deg) skewY(-3.125deg)
+    }
+    55.5% {
+      transform: skewX(1.5625deg) skewY(1.5625deg)
+    }
+    66.6% {
+      transform: skewX(-0.78125deg) skewY(-0.78125deg)
+    }
+    77.7% {
+      transform: skewX(0.390625deg) skewY(0.390625deg)
+    }
+    88.8% {
+      transform: skewX(-0.1953125deg) skewY(-0.1953125deg)
+    }
+    100% {
+      transform: none
+    }
+  }
+  .jello {
+    animation: jello 1s;
+    transform-origin: center
+  }
+
+  @keyframes done{
+    0%   { width : 0; }
+    100% { width: 100%; }
+  }
+  .done {
+    position: relative;
+  }
+  .done::after {
+    content: ' ';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1.5px;
+    background: white;
+    animation-name: done;
+    animation-duration: 0.2s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  }
