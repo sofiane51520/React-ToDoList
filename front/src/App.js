@@ -1,8 +1,19 @@
 import React from 'react';
-import TodoList from './Todo/TodoList';
+import ToDoApp from "./ToDoApp/ToDoApp"
+import TodoList from "./ToDoApp/List/TodoList"
+import {BrowserRouter, Switch, Route} from "react-router-dom";
+
 const App = ()=> {
     return (
-      <TodoList />
+
+        <BrowserRouter>
+            <Switch>
+                <Route exact path="/" component={ToDoApp}/>
+                <Route path="/list/:id" component={TodoList}/>
+            </Switch>
+
+        </BrowserRouter>
+        // <ToDoApp></ToDoApp>
     )
 }
 

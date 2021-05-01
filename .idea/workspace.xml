@@ -2,34 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="80ea4f2a-d286-41e8-9843-ffbbd52525bd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/b765b120-da9f-4b7f-ad54-beaba4272a02.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/b765b120-da9f-4b7f-ad54-beaba4272a02/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/toDoApp.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back/src/Controller/TaskController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/Api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/.env" beforeDir="false" afterPath="$PROJECT_DIR$/back/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/back/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/back/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/back/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/back/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/front/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/front/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/front/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/Todo/Item/Item.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/Todo/Item/Item.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/Todo/Item/Item.scss" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/Todo/Item/Item.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/Todo/TodoList.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/Todo/TodoList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/Todo/TodoList.scss" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/Todo/TodoList.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/front/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b765b120-da9f-4b7f-ad54-beaba4272a02.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b765b120-da9f-4b7f-ad54-beaba4272a02.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,8 +14,15 @@
     <pharConfigPath>$PROJECT_DIR$/back/composer.json</pharConfigPath>
     <execution />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/front" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -169,6 +150,13 @@
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2020.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Benazouzi\Documents\react\toDoApp\front\src\ToDoApp" />
+      <recent name="C:\Users\Benazouzi\Documents\react\toDoApp\front\src\TodoApp\List" />
+      <recent name="C:\Users\Benazouzi\Documents\react\toDoApp\front\src\Todo" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -178,7 +166,8 @@
       <option name="presentableId" value="Default" />
       <updated>1619684566724</updated>
       <workItem from="1619684567837" duration="20647000" />
-      <workItem from="1619775441876" duration="3126000" />
+      <workItem from="1619775441876" duration="18972000" />
+      <workItem from="1619815975168" duration="19986000" />
     </task>
     <servers />
   </component>

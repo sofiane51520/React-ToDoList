@@ -2,17 +2,17 @@ import React, { useState, useEffect } from 'react';
 import Item from './Item/Item'
 import { FaPlusCircle } from 'react-icons/fa'
 import './TodoList.scss'
-import axios from '../Api';
+import axios from '../../Api';
 
-const TodoList = () => {
-    const [list, setList] = useState([])
+const TodoList = (id) => {
+    const [tasks, setTasks] = useState([])
     const [item, setItem] = useState('')
-
+    const currId = id.match.params.id
     useEffect(() => {
         async function fetchData(){
             await axios
-                .get('https://localhost:8000/api/tasks')
-                .then(res => setList(res.data))
+                .get(`https://localhost:8000/api/to_do_lists/${currId}/tasks`)
+                .then(res => setTasks(res.data))
         }
         fetchData()
     },[])
@@ -24,12 +24,12 @@ const TodoList = () => {
             return
         }
         await axios
-            .post('https://localhost:8000/api/tasks',{content:item,done:false})
+            .post('https://localhost:8000/api/tasks',{content:item,done:false,toDoList:`/api/to_do_lists/${currId}`})
             .then(
                 (res) => {
-                    const newList = [...list]
+                    const newList = [...tasks]
                     newList.push({content:res.data.content,id:res.data.id,done:false,displayEdit:false})
-                    setList(newList)
+                    setTasks(newList)
                     setItem('')
                 },(error)=>{
                     alert('Une erreur s\'est produite !')
@@ -43,7 +43,7 @@ const TodoList = () => {
             .delete(`https://localhost:8000/api/tasks/${id}`)
             .then(
                 (res) => {
-                    setList(list.filter(e=> e.id !== id))
+                    setTasks(tasks.filter(e=> e.id !== id))
                 },(error)=>{
                     alert('Une erreur s\'est produite !')
                     console.log(error)
@@ -52,32 +52,32 @@ const TodoList = () => {
     }
 
     const doneItem = async (id) => {
-        const task = list.find(e => e.id === id)
+        const task = tasks.find(e => e.id === id)
         await axios
             .patch(`https://localhost:8000/api/tasks/${id}`,{content:task.value,done:!task.done})
-            .then(setList(list.map((item)=> item.id === id ? {...item, done:!item.done}: item)))
+            .then(setTasks(tasks.map((item)=> item.id === id ? {...item, done:!item.done}: item)))
             .catch((error)=>{
                 alert('Une erreur s\'est produite !')
             })
     }
 
     const toggleEdition = (id) => {
-        setList(list.map((item)=> item.id === id ? {...item, displayEdit:!item.displayEdit }: item))
+        setTasks(tasks.map((item)=> item.id === id ? {...item, displayEdit:!item.displayEdit }: item))
     }
-
+//TODO Return item
     const editItem = async (id, value) => {
         if (!value.length){
             alert('Ajoute du contenu batard')
             return
         }
-        const task = list.find(e => e.id === id)
+        const task = tasks.find(e => e.id === id)
         await axios
             .patch(`https://localhost:8000/api/tasks/${id}`,{content:value,done:task.done})
-            .then(setList(list.map((item)=> item.id === id ? {...item, content:item.content}: item)))
+            .then(setTasks(tasks.map((item) => item.id === id ? {...item, content:item.content}: item)))
             .catch((error)=>{
                 alert('Une erreur s\'est produite !')
             })
-        setList(list.map((item)=> item.id === id ? {...item, content:value, displayEdit:!item.displayEdit}: item))
+        setTasks(tasks.map((item)=> item.id === id ? {...item, content:value, displayEdit:!item.displayEdit}: item))
     }
     return (
         <div className="flex-container">
@@ -91,7 +91,7 @@ const TodoList = () => {
                               onClick={addItem}/>
             </div>
             <ul>
-                {list.map(item => {
+                {tasks.map(item => {
                     return (
                         <li key={item.id}>
                             <Item item={item} onDelete={deleteItem} onDone={doneItem} onEditionToggle={toggleEdition} onEdit={editItem}/>
