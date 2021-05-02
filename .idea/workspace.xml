@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="80ea4f2a-d286-41e8-9843-ffbbd52525bd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b765b120-da9f-4b7f-ad54-beaba4272a02.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b765b120-da9f-4b7f-ad54-beaba4272a02.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -145,7 +144,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../toDoList" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2020.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -168,6 +167,8 @@
       <workItem from="1619684567837" duration="20647000" />
       <workItem from="1619775441876" duration="18972000" />
       <workItem from="1619815975168" duration="19986000" />
+      <workItem from="1619892228838" duration="56000" />
+      <workItem from="1619947088305" duration="7873000" />
     </task>
     <servers />
   </component>

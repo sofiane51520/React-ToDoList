@@ -4,18 +4,25 @@ import { FaCheckCircle } from 'react-icons/fa'
 import { FaEdit } from 'react-icons/fa'
 import './Item.scss'
 
-const Item = ({ item, onDelete, onDone, onEditionToggle, onEdit }) => {
+const Item = ({ item, onDelete, onEditionToggle, onEdit }) => {
     const [tempVal, setTempVal] = useState(item.content)
 
     const handleDelete = () => onDelete(item.id)
     const handleDone = () => {
-        if(!item.displayEdit) onDone(item.id)
+        if(!item.displayEdit){
+            onEdit({content:item.content,id:item.id,done:!item.done,displayEdit:false})
+        }
     }
     const handleEditToggle = () => {
         if (!item.done) onEditionToggle(item.id)
+        setTempVal(item.content)
     }
     const handleEdit = () => {
-        onEdit(item.id, tempVal)
+        if (!tempVal.length){
+            alert('Ajouter du contenu')
+            return
+        }
+        onEdit({content:tempVal,id:item.id,done:false,displayEdit:true})
     }
 
     return (

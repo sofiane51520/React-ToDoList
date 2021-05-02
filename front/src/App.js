@@ -5,7 +5,6 @@ import {BrowserRouter, Switch, Route} from "react-router-dom";
 
 const App = ()=> {
     return (
-
         <BrowserRouter>
             <Switch>
                 <Route exact path="/" component={ToDoApp}/>
@@ -13,7 +12,6 @@ const App = ()=> {
             </Switch>
 
         </BrowserRouter>
-        // <ToDoApp></ToDoApp>
     )
 }
 

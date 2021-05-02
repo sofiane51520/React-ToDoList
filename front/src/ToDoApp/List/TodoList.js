@@ -3,6 +3,7 @@ import Item from './Item/Item'
 import { FaPlusCircle } from 'react-icons/fa'
 import './TodoList.scss'
 import axios from '../../Api';
+import Header from '../../Header'
 
 const TodoList = (id) => {
     const [tasks, setTasks] = useState([])
@@ -16,7 +17,6 @@ const TodoList = (id) => {
         }
         fetchData()
     },[])
-
 
     const addItem = async () => {
         if(!item.length){
@@ -51,37 +51,22 @@ const TodoList = (id) => {
             )
     }
 
-    const doneItem = async (id) => {
-        const task = tasks.find(e => e.id === id)
+    const toggleEdition = (id) => {
+        setTasks(tasks.map((item)=> item.id === id ? {...item, displayEdit:!item.displayEdit }: item))
+    }
+
+    const editItem = async (item) => {
         await axios
-            .patch(`https://localhost:8000/api/tasks/${id}`,{content:task.value,done:!task.done})
-            .then(setTasks(tasks.map((item)=> item.id === id ? {...item, done:!item.done}: item)))
+            .patch(`https://localhost:8000/api/tasks/${item.id}`,{content:item.content,done:item.done})
+            .then(setTasks(tasks.map((e) => e.id === item.id ? {...e, content:item.content, displayEdit:false, done:item.done}: e)))
             .catch((error)=>{
                 alert('Une erreur s\'est produite !')
             })
     }
 
-    const toggleEdition = (id) => {
-        setTasks(tasks.map((item)=> item.id === id ? {...item, displayEdit:!item.displayEdit }: item))
-    }
-//TODO Return item
-    const editItem = async (id, value) => {
-        if (!value.length){
-            alert('Ajoute du contenu batard')
-            return
-        }
-        const task = tasks.find(e => e.id === id)
-        await axios
-            .patch(`https://localhost:8000/api/tasks/${id}`,{content:value,done:task.done})
-            .then(setTasks(tasks.map((item) => item.id === id ? {...item, content:item.content}: item)))
-            .catch((error)=>{
-                alert('Une erreur s\'est produite !')
-            })
-        setTasks(tasks.map((item)=> item.id === id ? {...item, content:value, displayEdit:!item.displayEdit}: item))
-    }
     return (
         <div className="flex-container">
-            <h1>Ma Todo List</h1>
+            <Header/>
             <div className="listInput">
                 <input
                     value={item}
@@ -94,7 +79,7 @@ const TodoList = (id) => {
                 {tasks.map(item => {
                     return (
                         <li key={item.id}>
-                            <Item item={item} onDelete={deleteItem} onDone={doneItem} onEditionToggle={toggleEdition} onEdit={editItem}/>
+                            <Item item={item} onDelete={deleteItem} onEditionToggle={toggleEdition} onEdit={editItem}/>
                         </li>
                     )
                 })

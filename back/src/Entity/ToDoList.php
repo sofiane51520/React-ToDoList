@@ -33,6 +33,16 @@ class ToDoList
      */
     private $tasks;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $Description;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $img;
+
     public function __construct()
     {
         $this->tasks = new ArrayCollection();
@@ -81,6 +91,30 @@ class ToDoList
                 $task->setToDoList(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->Description;
+    }
+
+    public function setDescription(?string $Description): self
+    {
+        $this->Description = $Description;
+
+        return $this;
+    }
+
+    public function getImg(): ?string
+    {
+        return $this->img;
+    }
+
+    public function setImg(?string $img): self
+    {
+        $this->img = $img;
 
         return $this;
     }

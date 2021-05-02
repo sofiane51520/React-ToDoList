@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from 'react';
-import axios from "../Api";
+import React, {useEffect, useState} from 'react'
+import axios from "../Api"
 import './ToDoApp.scss'
 import '../App.scss'
 import Card from "../Utilities/Card"
-import {Link} from "react-router-dom";
-// import {Redirect} from "react-router-dom";
+import {Link} from 'react-router-dom'
+import Header from '../Header'
 const ToDoApp = ()=> {
     const [lists, setLists] = useState([])
 
@@ -19,7 +19,7 @@ const ToDoApp = ()=> {
 
     return (
         <>
-            <h1>To Do App</h1>
+            <Header/>
             <div className={'cardList container'}>
                 {lists.map((list) => {
                     return(
@@ -28,9 +28,9 @@ const ToDoApp = ()=> {
                         </Link>
                     )
                 })}
-                    </div>
-                    </>
-                    )
-                }
+            </div>
+        </>
+    )
+}
 
-                export default ToDoApp;
+export default ToDoApp;
