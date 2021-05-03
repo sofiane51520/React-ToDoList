@@ -11,11 +11,13 @@
   min-width:9.8em;
   .header{
     height: 4.5em;
-    //background-image:url('https://cdn.photographylife.com/wp-content/uploads/2017/01/What-is-landscape-photography.jpg');
-    background-image:url('https://images-eu.ssl-images-amazon.com/images/I/81m-JmYHSrL.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
     transition: all 0.4s ease-in-out;
+    img{
+      max-height: 100%;
+      min-width: 100%;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
   }
   .desc{
     background-color: transparent;

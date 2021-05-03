@@ -830,7 +830,15 @@ SELECT|sys.sys_config
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="250" parent="236" name="PRIMARY">
+    <column id="250" parent="236" name="description">
+      <Position>3</Position>
+      <DataType>longtext|0s</DataType>
+    </column>
+    <column id="251" parent="236" name="img">
+      <Position>4</Position>
+      <DataType>longtext|0s</DataType>
+    </column>
+    <key id="252" parent="236" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
