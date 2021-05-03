@@ -1,16 +1,14 @@
 import './Card.scss'
 
-const Card = ({title}) => {
+const Card = ({title, description,img}) => {
     return (
         <div className={'cardContainer'}>
-            <div className={'header'}/>
+            <div className={'header'}>
+                <img src={img}/>
+            </div>
             <div className={'desc'}>
                 <h4>{title}</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur
-                    adipisicing elit. Corporis cupiditate dolores eligendi
-                    laborum molestiae necessitatibus officia? A architecto
-                    consequuntur eaque harum, inventore ipsam maiores quae
-                    sint totam vel voluptas voluptatem!2</p>
+                <p>{description}</p>
             </div>
         </div>
     )

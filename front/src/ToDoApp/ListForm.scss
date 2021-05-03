@@ -1,0 +1,34 @@
+form{
+  border: 3px solid transparent;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2em;
+  align-items: center;
+
+  button{
+    border: 1px solid transparent;
+    color: #FFFFFF;
+
+    padding: 4px;
+    background: transparent;
+    box-shadow: 1px 8px 15px rgba(0, 0, 0, 0.1);
+    width: 140px;
+    height: 45px;
+
+    border-radius: 45px;
+    transition-duration: 1s;
+    transition: all ;
+  }
+
+  button:hover{
+    transform: translateY(-6px) scale(1.1);
+  }
+
+  label{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+}
