@@ -6,9 +6,10 @@ import Card from "../Utilities/Card"
 import {Link} from 'react-router-dom'
 import Header from '../Header'
 import ListForm from "./ListForm";
+import {FaPlusCircle} from "react-icons/fa";
 const ToDoApp = ()=> {
     const [lists, setLists] = useState([])
-
+    const [form, setForm] = useState(false)
     useEffect(() => {
         async function fetchData(){
             await axios
@@ -19,16 +20,20 @@ const ToDoApp = ()=> {
     },[])
 
     const addList = () => {
-
+        setForm(!form)
     }
 
     return (
         <>
             <Header/>
-            <ListForm/>
+            <span>
+                <hr className={'right'}/>
+                 <FaPlusCircle style={{cursor: 'pointer'}} size={75}  onClick={addList}/>
+                <hr className={'left'}/>
+            </span>
+            <ListForm display={form}/>
             <div className={'cardList container'}>
                 {lists.map((list) => {
-                    console.log(list)
                     return(
                         <Link key={list.id} to={`/list/${list.id}`}>
                             <Card key={list.id} title={list.name} description={list.description} img={list.img}/>
@@ -37,7 +42,7 @@ const ToDoApp = ()=> {
                 })}
             </div>
         </>
-    )
+)
 }
 
 export default ToDoApp;

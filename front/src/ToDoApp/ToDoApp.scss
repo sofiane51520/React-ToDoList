@@ -2,4 +2,28 @@
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
+  margin-top: 2em;
+}
+
+span{
+  display: flex;
+  justify-content: space-between;
+
+  hr.left{
+    margin-right: 15%;
+    width: 48%;
+    height: 85px;
+    border-width: 5px 0 0 0;
+    border-radius: 130px 0px 0px 0px;
+    border-top: 3px solid white;
+  }
+
+  hr.right {
+    margin-left: 15%;
+    width: 48%;
+    height: 85px;
+    border-width: 5px 0 0 0;
+    border-radius: 0px 130px 0px 0px;
+    border-top: 3px solid white;
+  }
 }

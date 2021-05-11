@@ -6,6 +6,8 @@ form{
   margin-bottom: 2em;
   align-items: center;
 
+  height: 0;
+  overflow: hidden;
   button{
     border: 1px solid transparent;
     color: #FFFFFF;
@@ -31,4 +33,22 @@ form{
     align-items: center;
     margin-bottom: 1rem;
   }
+}
+
+//.min{
+//  animation: develop 1s linear;
+//  animation-direction: reverse;
+//  height: auto;
+//}
+
+.max{
+  animation: develop 1s ease-in-out;
+  animation-direction: normal;
+  height: auto;
+  width: auto;
+}
+
+@keyframes develop {
+  0% { height: 0; width: 0 }
+  100% { height: 300px; width: 250px }
 }

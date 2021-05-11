@@ -1,9 +1,9 @@
 import React from 'react';
 import './ListForm.scss'
-const ListForm = ({list})=> {
+const ListForm = ({display})=> {
 
     return (
-        <form className={'container'}>
+        <form className={`container ${display ?'max':'min'}`}>
             <label>
                 Nom
             <input type={'text'} name={'name'}/>
