@@ -10,6 +10,7 @@ import {FaPlusCircle} from "react-icons/fa";
 const ToDoApp = ()=> {
     const [lists, setLists] = useState([])
     const [form, setForm] = useState(false)
+    const [item, setItem] = useState({name:'',description:'',img:''})
     useEffect(() => {
         async function fetchData(){
             await axios
