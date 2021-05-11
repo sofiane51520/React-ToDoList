@@ -8,7 +8,7 @@ import Header from '../Header'
 import ListForm from "./ListForm";
 const ToDoApp = ()=> {
     const [lists, setLists] = useState([])
-
+    const [item, setItem] = useState({name:'',description:'',img:''})
     useEffect(() => {
         async function fetchData(){
             await axios
@@ -25,7 +25,7 @@ const ToDoApp = ()=> {
     return (
         <>
             <Header/>
-            <ListForm/>
+            <ListForm list={item}/>
             <div className={'cardList container'}>
                 {lists.map((list) => {
                     console.log(list)
