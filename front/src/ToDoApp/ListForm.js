@@ -1,22 +1,32 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './ListForm.scss'
-const ListForm = ({display})=> {
+import {useForm} from "react-hook-form";
+import axios from "../Api";
+
+const ListForm = ({display, addList})=> {
+    const {register, handleSubmit, formState, getValues} = useForm()
+    const {errors, isSubmitting} = formState
+
+    const onSubmit = data =>{
+        console.log(data)
+        registerList()
+    }
+
+    async function registerList(){
+        await axios
+            // .post(`https://localhost:8000/api/to_do_lists`,{name:register('name'),description:register('description'),img:register('img'),})
+            .post(`https://localhost:8000/api/to_do_lists`,{name:getValues('name'),description:getValues('description'),img:getValues('img'),})
+            .then(addList({name:getValues('name'),description:getValues('description'),img:getValues('img'),}))
+    }
 
     return (
-        <form className={`container ${display ?'max':'min'}`}>
-            <label>
-                Nom
-            <input type={'text'} value={list.name} name={'name'}/>
-            </label>
-            <label>
-                Description
-                <textarea cols={"40"} value={list.description} rows={"5"} name={'description'}/>
-            </label>
-            <label>
-                Lien de l'image
-                <input type={'text'} value={list.img} name={'img'}/>
-            </label>
-            <button>Valider</button>
+        <form className={`container ${display ?'max':'min'}`} onSubmit={handleSubmit(onSubmit)}>
+            {errors.name && <span>{errors.name.message}</span>}
+
+            <input type={'text'} name={'name'} placeholder={'Nom'} {...register('name',{required: 'Vous devez entrer une valeur', minLength: {value:4,message:'Vous devez entrer au moins 4 caracètres'} })}/>
+            <textarea cols={"40"} rows={"5"} name={'description'} placeholder={'Description'} {...register('description')}/>
+            <input type={'text'} name={'img'} placeholder={'Lien de l\'image'}  {...register('img')}/>
+            <button type={'submit'} disabled={isSubmitting}>Valider</button>
         </form>
     )
 }

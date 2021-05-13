@@ -20,8 +20,14 @@ const ToDoApp = ()=> {
         fetchData()
     },[])
 
-    const addList = () => {
+    const showForm = () => {
         setForm(!form)
+    }
+
+    const addList = (item) =>{
+        const tmpLists = [...lists]
+        tmpLists.push(item)
+        setLists(tmpLists)
     }
 
     return (
@@ -29,10 +35,10 @@ const ToDoApp = ()=> {
             <Header/>
             <span>
                 <hr className={'right'}/>
-                 <FaPlusCircle style={{cursor: 'pointer'}} size={75}  onClick={addList}/>
+                 <FaPlusCircle style={{cursor: 'pointer'}} size={75}  onClick={showForm}/>
                 <hr className={'left'}/>
             </span>
-            <ListForm display={form}/>
+            <ListForm display={form} addList={addList}/>
             <div className={'cardList container'}>
                 {lists.map((list) => {
                     return(
