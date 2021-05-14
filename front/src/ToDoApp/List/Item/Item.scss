@@ -47,23 +47,9 @@ li {
             margin-right: 0.1em;
             transition: ease-in 0.3s;
         }
-        .deleteBtn:hover {
-           color: $errorColor;
-           transition: 1s;
-           transform: rotate(180deg);
-        }
-        .doneBtn:hover {
-            color: $validColor;
-         }
-        .editBtn:hover {
-             color: $warningColor;
-        }
         .deleted {
             transition: 2s linear;
             transform: translateX(200px);
-        }
-        .done {
-            color: $validColor;
         }
     }
 }

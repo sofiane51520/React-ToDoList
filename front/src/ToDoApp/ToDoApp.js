@@ -3,18 +3,19 @@ import axios from "../Api"
 import './ToDoApp.scss'
 import '../App.scss'
 import Card from "../Utilities/Card"
-import {Link} from 'react-router-dom'
 import Header from '../Header'
 import ListForm from "./ListForm";
 import {FaPlusCircle} from "react-icons/fa";
+import { API_BASE_URL } from '../config'
+
 const ToDoApp = ()=> {
     const [lists, setLists] = useState([])
     const [form, setForm] = useState(false)
-    const [item, setItem] = useState({name:'',description:'',img:''})
+
     useEffect(() => {
         async function fetchData(){
             await axios
-                .get('https://localhost:8000/api/to_do_lists')
+                .get(`${API_BASE_URL}/api/to_do_lists`)
                 .then(res => setLists(res.data))
         }
         fetchData()
@@ -28,6 +29,20 @@ const ToDoApp = ()=> {
         const tmpLists = [...lists]
         tmpLists.push(item)
         setLists(tmpLists)
+        if(form) setForm(!form)
+    }
+
+    const deleteList = async (id) => {
+        await axios
+            .delete(`${API_BASE_URL}/api/to_do_lists/${id}`)
+            .then(
+                (res) => {
+                    setLists(lists.filter(e=> e.id !== id))
+                },(error)=>{
+                    alert('Une erreur s\'est produite !')
+                    console.log(error)
+                }
+            )
     }
 
     return (
@@ -42,14 +57,12 @@ const ToDoApp = ()=> {
             <div className={'cardList container'}>
                 {lists.map((list) => {
                     return(
-                        <Link key={list.id} to={`/list/${list.id}`}>
-                            <Card key={list.id} title={list.name} description={list.description} img={list.img}/>
-                        </Link>
+                        <Card key={list.id} list={list} deleteList={deleteList}/>
                     )
                 })}
             </div>
         </>
-)
+    )
 }
 
 export default ToDoApp;

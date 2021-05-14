@@ -4,15 +4,16 @@ import { FaPlusCircle } from 'react-icons/fa'
 import './TodoList.scss'
 import axios from '../../Api';
 import Header from '../../Header'
+import { API_BASE_URL } from '../../config'
 
 const TodoList = (id) => {
     const [tasks, setTasks] = useState([])
     const [item, setItem] = useState('')
-    const currId = id.match.params.id
+    let currId = id.match.params.id
     useEffect(() => {
         async function fetchData(){
             await axios
-                .get(`https://localhost:8000/api/to_do_lists/${currId}/tasks`)
+                .get(`${API_BASE_URL}/api/to_do_lists/${currId}/tasks`)
                 .then(res => setTasks(res.data))
         }
         fetchData()
@@ -24,7 +25,7 @@ const TodoList = (id) => {
             return
         }
         await axios
-            .post('https://localhost:8000/api/tasks',{content:item,done:false,toDoList:`/api/to_do_lists/${currId}`})
+            .post(`${API_BASE_URL}/api/tasks`,{content:item,done:false,toDoList:`/api/to_do_lists/${currId}`})
             .then(
                 (res) => {
                     const newList = [...tasks]
@@ -40,7 +41,7 @@ const TodoList = (id) => {
 
     const deleteItem = async (id) => {
         await axios
-            .delete(`https://localhost:8000/api/tasks/${id}`)
+            .delete(`${API_BASE_URL}/api/tasks/${id}`)
             .then(
                 (res) => {
                     setTasks(tasks.filter(e=> e.id !== id))
@@ -57,7 +58,7 @@ const TodoList = (id) => {
 
     const editItem = async (item) => {
         await axios
-            .patch(`https://localhost:8000/api/tasks/${item.id}`,{content:item.content,done:item.done})
+            .patch(`${API_BASE_URL}/api/tasks/${item.id}`,{content:item.content,done:item.done})
             .then(setTasks(tasks.map((e) => e.id === item.id ? {...e, content:item.content, displayEdit:false, done:item.done}: e)))
             .catch((error)=>{
                 alert('Une erreur s\'est produite !')

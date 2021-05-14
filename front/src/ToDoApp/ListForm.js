@@ -1,22 +1,21 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './ListForm.scss'
 import {useForm} from "react-hook-form";
 import axios from "../Api";
 
 const ListForm = ({display, addList})=> {
-    const {register, handleSubmit, formState, getValues} = useForm()
+    const {register, handleSubmit, formState, getValues, reset} = useForm()
     const {errors, isSubmitting} = formState
 
     const onSubmit = data =>{
-        console.log(data)
         registerList()
+        reset()
     }
 
     async function registerList(){
         await axios
-            // .post(`https://localhost:8000/api/to_do_lists`,{name:register('name'),description:register('description'),img:register('img'),})
-            .post(`https://localhost:8000/api/to_do_lists`,{name:getValues('name'),description:getValues('description'),img:getValues('img'),})
-            .then(addList({name:getValues('name'),description:getValues('description'),img:getValues('img'),}))
+            .post(`https://localhost:8000/api/to_do_lists`,{name:getValues('name'),description:getValues('description'),img:getValues('img')})
+            .then(res => addList({name:res.data.name,description:res.data.description,img:res.data.img,id:res.data.id}))
     }
 
     return (
@@ -24,7 +23,7 @@ const ListForm = ({display, addList})=> {
             {errors.name && <span>{errors.name.message}</span>}
 
             <input type={'text'} name={'name'} placeholder={'Nom'} {...register('name',{required: 'Vous devez entrer une valeur', minLength: {value:4,message:'Vous devez entrer au moins 4 caracètres'} })}/>
-            <textarea cols={"40"} rows={"5"} name={'description'} placeholder={'Description'} {...register('description')}/>
+            <textarea cols={"30"} rows={"5"} name={'description'} placeholder={'Description'} {...register('description')}/>
             <input type={'text'} name={'img'} placeholder={'Lien de l\'image'}  {...register('img')}/>
             <button type={'submit'} disabled={isSubmitting}>Valider</button>
         </form>

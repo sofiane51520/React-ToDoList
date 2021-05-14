@@ -7,7 +7,6 @@ $warningColor: #F97C1C;
   margin: 0;
 }
 body {
-  margin: 0;
   background: dodgerblue linear-gradient(45deg, #c0cf4b, #da5a1e, #da1e1e) fixed;
   font: 1.5em "Fira Sans", sans-serif;
   color: white;
@@ -26,6 +25,20 @@ body {
     h1{
       text-align: center;
     }
+  }
+  .deleteBtn:hover {
+    color: $errorColor;
+    transition: 1s;
+    transform: rotate(180deg);
+  }
+  .doneBtn:hover {
+    color: $validColor;
+  }
+  .editBtn:hover {
+    color: $warningColor;
+  }
+  .done {
+    color: $validColor;
   }
 }
 
