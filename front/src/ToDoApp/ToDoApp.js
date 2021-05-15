@@ -7,16 +7,22 @@ import Header from '../Header'
 import ListForm from "./ListForm";
 import {FaPlusCircle} from "react-icons/fa";
 import { API_BASE_URL } from '../config'
+import Loader from '../Utilities/Loader'
 
 const ToDoApp = ()=> {
     const [lists, setLists] = useState([])
     const [form, setForm] = useState(false)
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
+        setLoading(true)
         async function fetchData(){
             await axios
                 .get(`${API_BASE_URL}/api/to_do_lists`)
-                .then(res => setLists(res.data))
+                .then(res => {
+                    setLists(res.data)
+                    setLoading(false)
+                })
         }
         fetchData()
     },[])
@@ -50,10 +56,11 @@ const ToDoApp = ()=> {
             <Header/>
             <span>
                 <hr className={'right'}/>
-                 <FaPlusCircle style={{cursor: 'pointer'}} size={75}  onClick={showForm}/>
+                 <FaPlusCircle style={{cursor: 'pointer'}} size={75} onClick={showForm}/>
                 <hr className={'left'}/>
             </span>
             <ListForm display={form} addList={addList}/>
+            <Loader display={loading}/>
             <div className={'cardList container'}>
                 {lists.map((list) => {
                     return(

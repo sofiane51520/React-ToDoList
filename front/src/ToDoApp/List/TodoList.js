@@ -5,16 +5,22 @@ import './TodoList.scss'
 import axios from '../../Api';
 import Header from '../../Header'
 import { API_BASE_URL } from '../../config'
+import Loader from "../../Utilities/Loader";
 
 const TodoList = (id) => {
     const [tasks, setTasks] = useState([])
     const [item, setItem] = useState('')
+    const [loading, setLoading] = useState(true)
+
     let currId = id.match.params.id
     useEffect(() => {
         async function fetchData(){
             await axios
                 .get(`${API_BASE_URL}/api/to_do_lists/${currId}/tasks`)
-                .then(res => setTasks(res.data))
+                .then(res => {
+                    setTasks(res.data)
+                    setLoading(false)
+                })
         }
         fetchData()
     },[])
@@ -76,6 +82,7 @@ const TodoList = (id) => {
                 <FaPlusCircle style={{cursor: 'pointer'}}
                               onClick={addItem}/>
             </div>
+            <Loader display={loading}/>
             <ul>
                 {tasks.map(item => {
                     return (
