@@ -3,7 +3,9 @@ import {Link} from 'react-router-dom'
 import './Header.scss'
 const Header = ()=> {
     return (
-        <header><Link to={"/"}><h1>To Do App</h1></Link></header>
+        <header>
+                <h1><Link to={"/"}>To Do App</Link></h1>
+        </header>
     )
 }
 

@@ -1,37 +1,39 @@
 form{
-  border: 3px solid transparent;
-  border-radius: 12px;
   display: flex;
   flex-direction: column;
-  margin-bottom: 2em;
   align-items: center;
   justify-content: space-evenly;
 
+  border: 3px solid transparent;
+  border-radius: 12px;
+
+  width: 500px;
   height: 0;
+
   overflow: hidden;
-
+  margin-right: auto;
+  margin-left: auto;
+  *{
+    margin-bottom: 1rem;
+  }
   button{
-    border: 1px solid transparent;
-    color: #FFFFFF;
+    border: 0;
+    border-radius: 45px;
 
-    padding: 4px;
     background: transparent;
-    box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5);
+    box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.6);
     width: 140px;
     height: 45px;
 
-    border-radius: 45px;
-    transition:ease-in-out .2s;
+    transition:ease-in .3s;
   }
   button:disabled{
-    background: grey;
+    background-color: grey;
   }
-
   button:hover{
     transform: translateY(-6px) scale(1.1);
     cursor: pointer;
   }
-
   textarea{
     outline: none;
     border-radius: 20px;
@@ -40,21 +42,21 @@ form{
   }
 }
 
-//.min{
-//  animation: develop 1s ease-in-out;
-//  animation-direction: reverse;
-//  height: 0;
-//}
+.min{
+  animation: develop 1s ease-in-out;
+  animation-direction: reverse;
+  //height: 0;
+  display: none;
+}
 
 .max{
   animation: develop 1s ease-in-out;
   animation-direction: normal;
-  height: 300px;
+  height: auto;
   box-shadow: 0  4px 0 white;
-
 }
 
 @keyframes develop {
   0% { height: 0; width: 0 }
-  100% { height: 300px; width: 500px }
+  100% { height: 254px; width: 500px }
 }

@@ -21,10 +21,16 @@ body {
     text-decoration: none;
     color: #FFFFFF;
   }
+  input, textarea{
+    color: black;
+  }
   #root{
     h1{
       text-align: center;
     }
+  }
+  button{
+    color: #FFFFFF;
   }
   .deleteBtn:hover {
     color: $errorColor;

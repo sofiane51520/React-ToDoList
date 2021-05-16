@@ -42,8 +42,8 @@ const ToDoApp = ()=> {
         await axios
             .delete(`${API_BASE_URL}/api/to_do_lists/${id}`)
             .then(
-                (res) => {
-                    setLists(lists.filter(e=> e.id !== id))
+                () => {
+                    setLists(lists.filter(e => e.id !== id))
                 },(error)=>{
                     alert('Une erreur s\'est produite !')
                     console.log(error)
