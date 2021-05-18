@@ -10,10 +10,11 @@ const Card = ({list, deleteList, editList}) => {
     const [edit, setEdit] = useState(false)
 
     const handleDelete =() => deleteList(list.id)
-    const handleEdit =() => editList(list.id)
+    const toggleEdit = () => setEdit(!edit)
+    const handleEdit = (item) => editList(list.id,item)
     return (
         <div className={'cardContainer'}>
-            <ListForm display={edit}/>
+            <ListForm display={edit} submitFct={handleEdit} list={list}/>
             <div className={`card ${edit ?'hide':''}`}>
                 <Link key={list.id} to={`/list/${list.id}`}>
                     <div className={'header'}>
@@ -25,7 +26,7 @@ const Card = ({list, deleteList, editList}) => {
                     </div>
                 </Link>
                 <div className={'cardBtn'}>
-                    <FaEdit size={30} className={'editBtn'} onClick={handleEdit}/>
+                    <FaEdit size={30} className={'editBtn'} onClick={toggleEdit}/>
                     <FaTimes size={30} className={'deleteBtn'} onClick={handleDelete}/>
                 </div>
             </div>

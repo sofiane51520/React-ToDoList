@@ -3,28 +3,20 @@ import './ListForm.scss'
 import {useForm} from "react-hook-form";
 import axios from "../Api";
 
-const ListForm = ({display, addList = null})=> {
+const ListForm = ({display, submitFct, list})=> {
     const {register, handleSubmit, formState, getValues, reset} = useForm()
     const {errors, isSubmitting} = formState
 
-    const onSubmit = data => {
-        registerList()
+    const onSubmit = () => {
+        editList()
         reset()
     }
-
-    async function registerList(){
-        await axios
-            .post(`https://localhost:8000/api/to_do_lists`,{name:getValues('name'),description:getValues('description'),img:getValues('img')})
-            .then(res => addList({name:res.data.name,description:res.data.description,img:res.data.img,id:res.data.id}))
-    }
-
     async function editList(){
-        await axios
-            .patch(`https://localhost:8000/api/to_do_lists`,{name:getValues('name'),description:getValues('description'),img:getValues('img')})
-            .then(res => addList({name:res.data.name,description:res.data.description,img:res.data.img,id:res.data.id}))
+        submitFct({name:getValues('name'),description:getValues('description'),img:getValues('img')})
     }
 
     return (
+
         <form className={`${display ?'max':'min'}`} onSubmit={handleSubmit(onSubmit)}>
             {errors.name && <span>{errors.name.message}</span>}
 

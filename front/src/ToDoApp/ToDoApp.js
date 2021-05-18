@@ -31,11 +31,19 @@ const ToDoApp = ()=> {
         setForm(!form)
     }
 
-    const addList = (item) =>{
-        const tmpLists = [...lists]
-        tmpLists.push(item)
-        setLists(tmpLists)
-        if(form) setForm(!form)
+    const addList = async (item) => {
+        await axios
+            .post(`https://localhost:8000/api/to_do_lists`, {
+                name: item.name,
+                description: item.description,
+                img: item.img
+            })
+            .then(res => {
+                const tmpLists = [...lists]
+                tmpLists.push({name: res.data.name, description: res.data.description, img: res.data.img, id: res.data.id})
+                setLists(tmpLists)
+                if (form) setForm(!form)
+            })
     }
 
     const deleteList = async (id) => {
@@ -51,6 +59,17 @@ const ToDoApp = ()=> {
             )
     }
 
+    const editList = async (id,item) => {
+        await axios
+            .patch(`https://localhost:8000/api/to_do_lists`, {
+                name: item.name,
+                description: item.description,
+                img: item.img
+            })
+            .then(res => setLists(lists.map((e) => e.id === item.id ? {...e, name:res.data.name,description:res.data.name, img:res.data.img}: e)))
+    }
+
+
     return (
         <>
             <Header/>
@@ -59,12 +78,12 @@ const ToDoApp = ()=> {
                  <FaPlusCircle style={{cursor: 'pointer'}} size={75} onClick={showForm}/>
                 <hr className={'left'}/>
             </span>
-            <ListForm display={form} addList={addList}/>
+            <ListForm display={form} submitFct={addList}/>
             <Loader display={loading}/>
             <div className={'cardList container'}>
                 {lists.map((list) => {
                     return(
-                        <Card key={list.id} list={list} deleteList={deleteList}/>
+                        <Card key={list.id} list={list} deleteList={deleteList} editList={editList}/>
                     )
                 })}
             </div>
