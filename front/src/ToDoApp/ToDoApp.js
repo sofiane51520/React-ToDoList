@@ -33,7 +33,7 @@ const ToDoApp = ()=> {
 
     const addList = async (item) => {
         await axios
-            .post(`https://localhost:8000/api/to_do_lists`, {
+            .post(`${API_BASE_URL}/api/to_do_lists`, {
                 name: item.name,
                 description: item.description,
                 img: item.img
@@ -61,12 +61,15 @@ const ToDoApp = ()=> {
 
     const editList = async (id,item) => {
         await axios
-            .patch(`https://localhost:8000/api/to_do_lists`, {
+            .patch(`${API_BASE_URL}/api/to_do_lists/${id}`, {
                 name: item.name,
                 description: item.description,
                 img: item.img
             })
-            .then(res => setLists(lists.map((e) => e.id === item.id ? {...e, name:res.data.name,description:res.data.name, img:res.data.img}: e)))
+            .then(res => {
+                setLists(lists.map((e) => e.id === item.id ? {...e, name:res.data.name,description:res.data.name, img:res.data.img}: e))
+                setForm(false)
+            })
     }
 
 
@@ -78,7 +81,7 @@ const ToDoApp = ()=> {
                  <FaPlusCircle style={{cursor: 'pointer'}} size={75} onClick={showForm}/>
                 <hr className={'left'}/>
             </span>
-            <ListForm display={form} submitFct={addList}/>
+            <ListForm display={form} toggleDisplay={showForm} submitFct={addList}/>
             <Loader display={loading}/>
             <div className={'cardList container'}>
                 {lists.map((list) => {

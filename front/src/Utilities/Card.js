@@ -12,9 +12,10 @@ const Card = ({list, deleteList, editList}) => {
     const handleDelete =() => deleteList(list.id)
     const toggleEdit = () => setEdit(!edit)
     const handleEdit = (item) => editList(list.id,item)
+
     return (
         <div className={'cardContainer'}>
-            <ListForm display={edit} submitFct={handleEdit} list={list}/>
+            <ListForm display={edit} toggleDisplay={toggleEdit} submitFct={handleEdit} data={list}/>{/*{name:list.name,description:list.description,img:list.img}*/}
             <div className={`card ${edit ?'hide':''}`}>
                 <Link key={list.id} to={`/list/${list.id}`}>
                     <div className={'header'}>
