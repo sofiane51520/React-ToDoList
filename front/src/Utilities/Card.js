@@ -11,7 +11,9 @@ const Card = ({list, deleteList, editList}) => {
 
     const handleDelete =() => deleteList(list.id)
     const toggleEdit = () => setEdit(!edit)
-    const handleEdit = (item) => editList(list.id,item)
+    const handleEdit = (item) => {
+        editList(list.id,item)
+    }
 
     return (
         <div className={'cardContainer'}>

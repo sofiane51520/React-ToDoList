@@ -93,11 +93,9 @@
       <excludeFolder url="file://$MODULE_DIR$/back/vendor/friendsofphp/proxy-manager-lts" />
       <excludeFolder url="file://$MODULE_DIR$/back/vendor/laminas/laminas-code" />
       <excludeFolder url="file://$MODULE_DIR$/back/vendor/laminas/laminas-zendframework-bridge" />
-      <excludeFolder url="file://$MODULE_DIR$/back/vendor/laminas/laminas-eventmanager" />
       <excludeFolder url="file://$MODULE_DIR$/back/vendor/twig/extra-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/back/vendor/twig/twig" />
       <excludeFolder url="file://$MODULE_DIR$/back/vendor/psr/container" />
-      <excludeFolder url="file://$MODULE_DIR$/back/vendor/psr/log" />
       <excludeFolder url="file://$MODULE_DIR$/back/vendor/psr/cache" />
       <excludeFolder url="file://$MODULE_DIR$/back/vendor/psr/event-dispatcher" />
       <excludeFolder url="file://$MODULE_DIR$/back/vendor/psr/link" />
@@ -108,6 +106,8 @@
       <excludeFolder url="file://$MODULE_DIR$/back/vendor/api-platform/core" />
       <excludeFolder url="file://$MODULE_DIR$/back/vendor/nelmio/cors-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/back/vendor/fig/link-util" />
+      <excludeFolder url="file://$MODULE_DIR$/back/vendor/psr/log" />
+      <excludeFolder url="file://$MODULE_DIR$/back/vendor/laminas/laminas-eventmanager" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
