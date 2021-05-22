@@ -59,7 +59,7 @@ const ToDoApp = ()=> {
             )
     }
 
-    const editList = async (id,item) => {
+    const editList = async (id,item, callback) => {
         await axios
             .patch(`${API_BASE_URL}/api/to_do_lists/${id}`, {
                 name: item.name,
@@ -67,8 +67,8 @@ const ToDoApp = ()=> {
                 img: item.img
             })
             .then(res => {
-                setLists(lists.map((e) => e.id === item.id ? {...e, name:res.data.name,description:res.data.name, img:res.data.img}: e))
-                setForm(false)
+                setLists(lists.map((e) => e.id === id ? {...e, name:res.data.name,description:res.data.description, img:res.data.img}: e))
+                callback(false)
             })
     }
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import LoaderGIF from '../assets/coincoin.gif'
-import Dots from '../assets/loader.gif'
 import './Loader.scss'
 
 function Loader({display}){
