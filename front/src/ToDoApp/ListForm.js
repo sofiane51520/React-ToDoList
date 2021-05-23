@@ -23,15 +23,16 @@ const ListForm = ({display, toggleDisplay,submitFct, data = null})=> {
     }
 
     return (
-        <form className={`card ${display ?'max':'min'}`} onSubmit={handleSubmit(onSubmit)}>
+        <form className={`${display ?'max':'min'}`} onSubmit={handleSubmit(onSubmit)}>
             {errors.name && <span>{errors.name.message}</span>}
-
-            <input type={'text'} name={'name'} placeholder={'Nom'} {...register('name',{required: 'Vous devez entrer une valeur'})}/>
-            <textarea cols={"15"} rows={"5"} name={'description'} placeholder={'Description'} {...register('description')}/>
-            <input type={'text'} name={'img'} placeholder={'Lien de l\'image'}  {...register('img')}/>
+            <div className={'inputContainer'}>
+                <input type={'text'} name={'name'} placeholder={'Nom'} {...register('name',{required: 'Vous devez entrer une valeur'})}/>
+                <textarea cols={"21"} rows={"5"} name={'description'} placeholder={'Description'} {...register('description')}/>
+                <input type={'text'} name={'img'} placeholder={'Lien de l\'image'}  {...register('img')}/>
+            </div>
             <div className={'btnContainer'}>
-                <FaCheckCircle size={30} className={'leftBtn doneBtn'} type={'submit'}  disabled={isSubmitting} onClick={onSubmit}/>
-                <FaTimes size={30} className={'rightBtn deleteBtn'} onClick={toggleDisplay}/>
+                <FaCheckCircle size={30} className={'doneBtn'} type={'submit'}  disabled={isSubmitting} onClick={onSubmit}/>
+                <FaTimes size={30} className={'deleteBtn'} onClick={toggleDisplay}/>
             </div>
         </form>
     )

@@ -2,18 +2,30 @@ form{
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
 
   border: 3px solid transparent;
   border-radius: 12px;
 
   width: auto;
-  height: 0;
+  max-width: 300px;
 
   overflow-y: hidden;
 
   margin-right: auto;
   margin-left: auto;
+
+  .inputContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100%;
+    textarea{
+      outline: none;
+      border-radius: 20px;
+      border: 1px solid transparent;
+      padding: 6px;
+    }
+  }
 
   .btnContainer {
     display: flex;
@@ -21,68 +33,28 @@ form{
     padding: 3px;
     border-top: 2px #FFFFFF solid;
     width: 100%;
-    margin-top: auto;
-    margin-bottom:0;
-    button {
-      border-radius: 45px;
-      border: 1px solid transparent;
-      background: transparent;
-
-      width: auto;
-      height: 45px;
-
-      transition: ease-in .3s;
-    }
-    .rightBtn{
-      border-bottom-left-radius: 0 !important;
-      border-top-left-radius:0 !important;
-    }
-    .leftBtn{
-      border-bottom-right-radius: 0 !important;
-      border-top-right-radius:0 !important;
-    }
-
-    button:disabled {
-      background-color: grey;
-    }
-
-    button:hover {
-      //transform: translateY(-6px)/* scale(1.1)*/;
-      background-color: #da441e;
-      cursor: pointer;
-    }
-  }
-  input{
-    margin: 1em;
-  }
-  textarea{
-    outline: none;
-    border-radius: 20px;
-    border: 1px solid transparent;
-    padding: 6px;
-    margin-bottom: 1em;
   }
 }
 
-.min{
-  animation: develop 1s ease-in-out;
+form.min{
+  animation-name: develop;
+  animation: ease-in-out;
+  animation-duration: 1s;
   animation-direction: reverse;
-  //height: 0;
-  display: none;
+  height: 0;
+  border: none;
 }
 
-.card{
-  width: auto !important;
-}
-
-.max{
-  animation: develop 1s ease-in-out;
+form.max{
+  animation-name: develop;
+  animation-timing-function: ease-in;
+  animation-duration: 1s;
   animation-direction: normal;
-  height: auto;
+  height: 290px;
   box-shadow: 0  4px 0 white;
 }
 
 @keyframes develop {
-  0% { height: 0; width: 0 }
+  0% { height: 0; }
   100% { height: 287px; }
 }
