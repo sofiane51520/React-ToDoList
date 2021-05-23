@@ -1,4 +1,3 @@
-@import "../../../App";
 li {
     margin-top: 1em;
     list-style-position: inside;
@@ -26,12 +25,6 @@ li {
       svg{
         margin-left: 1em;
       }
-      svg:hover{
-        color: $validColor;
-      }
-    }
-    .hide{
-      display: none !important;
     }
 
     .btnContainer {
@@ -53,14 +46,7 @@ li {
         }
     }
 }
-input {
-  outline: none;
-  border-radius: 10px;
-  border: none;
-  padding-left: 8px;
-  margin-right: 1em;
-  height: 25px;
-}
+
 li:hover {
     transition: ease-in 0.1s;
     transform: translateY(-3px) scale(1.02);

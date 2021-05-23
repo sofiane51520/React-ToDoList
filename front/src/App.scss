@@ -24,6 +24,14 @@ body {
   }
   input, textarea{
     color: black;
+    outline: none;
+    border-radius: 10px;
+    border: none;
+    padding: 6px;
+    height: 25px;
+  }
+  textarea{
+    height: auto;
   }
   #root{
     h1{
@@ -50,7 +58,7 @@ body {
 }
 
 .hide{
-  display: none;
+  display: none !important;
 }
 @media screen and (max-width: 668px) {
   .container {

@@ -3,6 +3,7 @@ import { FaTimes } from 'react-icons/fa'
 import { FaCheckCircle } from 'react-icons/fa'
 import { FaEdit } from 'react-icons/fa'
 import './Item.scss'
+import '../../../App.scss'
 
 const Item = ({ item, onDelete, onEditionToggle, onEdit }) => {
     const [tempVal, setTempVal] = useState(item.content)
