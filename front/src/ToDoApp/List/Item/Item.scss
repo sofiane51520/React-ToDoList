@@ -44,6 +44,10 @@ li {
             transition: 2s linear;
             transform: translateX(200px);
         }
+        .positionBtnContainer{
+          display: flex;
+          flex-direction: column;
+        }
     }
 }
 

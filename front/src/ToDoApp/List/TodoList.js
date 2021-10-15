@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import Item from './Item/Item'
 import { FaPlusCircle } from 'react-icons/fa'
 import './TodoList.scss'
@@ -6,6 +6,8 @@ import axios from '../../Api';
 import Header from '../../Header'
 import { API_BASE_URL } from '../../config'
 import Loader from "../../Utilities/Loader";
+import { useDrag } from 'react-dnd'
+import { update } from 'immutability-helper'
 
 const TodoList = (id) => {
     const [tasks, setTasks] = useState([])
@@ -16,7 +18,8 @@ const TodoList = (id) => {
     useEffect(() => {
         async function fetchData(){
             await axios
-                .get(`${API_BASE_URL}/api/to_do_lists/${currId}/tasks`)
+                // .get(`${API_BASE_URL}/api/to_do_lists/${currId}/tasks`)
+                .get(`${API_BASE_URL}/api/to_do_lists/${currId}/tasks?page=1&order%5Bposition%5D=asc`)
                 .then(res => {
                     setTasks(res.data)
                     setLoading(false)
@@ -35,7 +38,7 @@ const TodoList = (id) => {
             .then(
                 (res) => {
                     const newList = [...tasks]
-                    newList.push({content:res.data.content,id:res.data.id,done:false,displayEdit:false})
+                    newList.push({content:res.data.content,id:res.data.id,done:false,displayEdit:false,position:newList.length+1})
                     setTasks(newList)
                     setItem('')
                 },(error)=>{
@@ -64,13 +67,37 @@ const TodoList = (id) => {
 
     const editItem = async (item) => {
         await axios
-            .patch(`${API_BASE_URL}/api/tasks/${item.id}`,{content:item.content,done:item.done})
+            .patch(`${API_BASE_URL}/api/tasks/${item.id}`,{content:item.content,done:item.done,position:item.position})
             .then(setTasks(tasks.map((e) => e.id === item.id ? {...e, content:item.content, displayEdit:false, done:item.done}: e)))
             .catch((error)=>{
                 alert('Une erreur s\'est produite !')
             })
     }
 
+    const changeOrder = async (item, posDiff) => {
+        if (item.position + posDiff < 0 || item.position + posDiff > tasks.length - 1)
+            return
+        let newTasks = [...tasks]
+        let temp = Object.create(newTasks[item.position + posDiff])
+
+        item.position += posDiff
+        temp.position -= posDiff
+
+        newTasks[item.position] = item
+        newTasks[temp.position] = temp
+
+        setTasks(newTasks)
+    }
+
+    const moveTask = useCallback((dragIndex, hoverIndex) => {
+        const dragCard = tasks[dragIndex];
+        setTasks(update(tasks, {
+            $splice: [
+                [dragIndex, 1],
+                [hoverIndex, 0, dragCard],
+            ],
+        }));
+    }, [tasks]);
     return (
         <div className="flex-container">
             <Header/>
@@ -87,7 +114,7 @@ const TodoList = (id) => {
                 {tasks.map(item => {
                     return (
                         <li key={item.id}>
-                            <Item item={item} onDelete={deleteItem} onEditionToggle={toggleEdition} onEdit={editItem}/>
+                            <Item item={item} id={item.id} index={item.position} onDelete={deleteItem} onEditionToggle={toggleEdition} onEdit={editItem} onOrderChange={changeOrder} moveTask={moveTask}/>
                         </li>
                     )
                 })

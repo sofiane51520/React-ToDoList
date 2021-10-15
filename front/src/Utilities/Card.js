@@ -17,7 +17,7 @@ const Card = ({list, deleteList, editList}) => {
 
     return (
         <div className={'cardContainer'}>
-            <ListForm display={edit} toggleDisplay={toggleEdit} submitFct={handleEdit} data={list}/>{/*{name:list.name,description:list.description,img:list.img}*/}
+            <ListForm display={edit} toggleDisplay={toggleEdit} submitFct={handleEdit} list={list}/>
             <div className={`card ${edit ?'hide':''}`}>
                 <Link key={list.id} to={`/list/${list.id}`}>
                     <div className={'header'}>

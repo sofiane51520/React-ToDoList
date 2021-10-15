@@ -2,14 +2,17 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use App\Repository\TaskRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
  * @ORM\Entity(repositoryClass=TaskRepository::class)
  */
+#[ApiResource]
+#[ApiFilter(OrderFilter::class, properties: ['position' => 'ASC'])]
 class Task
 {
     /**
@@ -34,6 +37,11 @@ class Task
      * @ORM\JoinColumn(nullable=false)
      */
     private $toDoList;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $position;
 
     public function getId(): ?int
     {
@@ -72,6 +80,18 @@ class Task
     public function setToDoList(?ToDoList $toDoList): self
     {
         $this->toDoList = $toDoList;
+
+        return $this;
+    }
+
+    public function getPosition(): ?int
+    {
+        return $this->position;
+    }
+
+    public function setPosition(int $position): self
+    {
+        $this->position = $position;
 
         return $this;
     }
