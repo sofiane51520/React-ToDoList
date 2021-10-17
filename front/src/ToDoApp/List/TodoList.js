@@ -6,8 +6,6 @@ import axios from '../../Api';
 import Header from '../../Header'
 import { API_BASE_URL } from '../../config'
 import Loader from "../../Utilities/Loader";
-import { useDrag } from 'react-dnd'
-import { update } from 'immutability-helper'
 
 const TodoList = (id) => {
     const [tasks, setTasks] = useState([])
@@ -86,18 +84,12 @@ const TodoList = (id) => {
         newTasks[item.position] = item
         newTasks[temp.position] = temp
 
+        editItem(newTasks[item.position])
+        editItem(newTasks[temp.position])
+
         setTasks(newTasks)
     }
 
-    const moveTask = useCallback((dragIndex, hoverIndex) => {
-        const dragCard = tasks[dragIndex];
-        setTasks(update(tasks, {
-            $splice: [
-                [dragIndex, 1],
-                [hoverIndex, 0, dragCard],
-            ],
-        }));
-    }, [tasks]);
     return (
         <div className="flex-container">
             <Header/>
@@ -114,7 +106,7 @@ const TodoList = (id) => {
                 {tasks.map(item => {
                     return (
                         <li key={item.id}>
-                            <Item item={item} id={item.id} index={item.position} onDelete={deleteItem} onEditionToggle={toggleEdition} onEdit={editItem} onOrderChange={changeOrder} moveTask={moveTask}/>
+                            <Item item={item} onDelete={deleteItem} onEditionToggle={toggleEdition} onEdit={editItem} onOrderChange={changeOrder}/>
                         </li>
                     )
                 })

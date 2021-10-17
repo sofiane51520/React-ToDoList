@@ -18,7 +18,7 @@ const ToDoApp = ()=> {
         setLoading(true)
         async function fetchData(){
             await axios
-                .get(`${API_BASE_URL}/api/to_do_lists?order[position]=asc`)
+                .get(`${API_BASE_URL}/api/to_do_lists`)
                 .then(res => {
                     setLists(res.data)
                     setLoading(false)
