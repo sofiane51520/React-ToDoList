@@ -21,7 +21,7 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "set HTTPS=true&&set SSL_CRT_FILE=C:\\Users\\sofia\\AppData\\Local\\mkcert\\rootCA.pem&&set SSL_KEY_FILE=C:\\Users\\sofia\\AppData\\Local\\mkcert\\rootCA-key.pem&&react-scripts start",
+    "start": "set HTTPS=true&&react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

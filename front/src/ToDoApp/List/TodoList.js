@@ -32,11 +32,11 @@ const TodoList = (id) => {
             return
         }
         await axios
-            .post(`${API_BASE_URL}/api/tasks`,{content:item,done:false,toDoList:`/api/to_do_lists/${currId}`})
+            .post(`${API_BASE_URL}/api/tasks`,{content:item,done:false,position:tasks.length,toDoList:`/api/to_do_lists/${currId}`})
             .then(
                 (res) => {
                     const newList = [...tasks]
-                    newList.push({content:res.data.content,id:res.data.id,done:false,displayEdit:false,position:newList.length+1})
+                    newList.push({content:res.data.content,id:res.data.id,done:false,displayEdit:false,position:newList.length})
                     setTasks(newList)
                     setItem('')
                 },(error)=>{
@@ -83,7 +83,7 @@ const TodoList = (id) => {
 
         newTasks[item.position] = item
         newTasks[temp.position] = temp
-
+        //TODO Refactor too much calls
         editItem(newTasks[item.position])
         editItem(newTasks[temp.position])
 
@@ -103,10 +103,10 @@ const TodoList = (id) => {
             </div>
             <Loader display={loading}/>
             <ul>
-                {tasks.map(item => {
+                {tasks.map((item,key) => {
                     return (
                         <li key={item.id}>
-                            <Item item={item} onDelete={deleteItem} onEditionToggle={toggleEdition} onEdit={editItem} onOrderChange={changeOrder}/>
+                            <Item item={item} onDelete={deleteItem} onEditionToggle={toggleEdition} onEdit={editItem} onOrderChange={changeOrder} position={key} length={tasks.length}/>
                         </li>
                     )
                 })

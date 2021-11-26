@@ -1,11 +1,11 @@
-import React, {useRef, useState} from 'react';
+import React, {useState} from 'react';
 import {FaChevronDown, FaChevronUp, FaTimes} from 'react-icons/fa'
 import { FaCheckCircle } from 'react-icons/fa'
 import { FaEdit } from 'react-icons/fa'
 import './Item.scss'
 import '../../../App.scss'
 
-const Item = ({ item, onDelete, onEditionToggle, onEdit, onOrderChange }) => {
+const Item = ({ item, onDelete, onEditionToggle, onEdit, onOrderChange, position, length }) => {
     const [tempVal, setTempVal] = useState(item.content)
 
     const handleDelete = () => onDelete(item.id)
@@ -35,7 +35,7 @@ const Item = ({ item, onDelete, onEditionToggle, onEdit, onOrderChange }) => {
                 {item.content}
             </span>
             <div
-                className={`btnContainer ${item.displayEdit ? '' : 'hide'}`}>
+                className={`${item.displayEdit ? '' : 'hide'}`}>
                 <input type='text' value={tempVal} onChange={e => setTempVal(e.target.value)} className={'input'}/>
             </div>
             <div className='btnContainer'>
