@@ -31,6 +31,17 @@ const Item = ({ item, onDelete, onEditionToggle, onEdit, onOrderChange, position
 
     return (
         <>
+            <div className='btnContainer'>
+                <div className={'positionBtnContainer'}>
+                    { position !== 0 &&
+                    <FaChevronUp onClick={e => handlePositionChange(-1)}/>
+                    }
+                    {
+                        position +1  !== length &&
+                        <FaChevronDown onClick={e => handlePositionChange(1)}/>
+                    }
+                </div>
+            </div>
             <span className={`value ${item.done ? 'done' : `${item.displayEdit ? 'hide':''}`} `}>
                 {item.content}
             </span>
@@ -39,10 +50,6 @@ const Item = ({ item, onDelete, onEditionToggle, onEdit, onOrderChange, position
                 <input type='text' value={tempVal} onChange={e => setTempVal(e.target.value)} className={'input'}/>
             </div>
             <div className='btnContainer'>
-                <div className={'actionBtn positionBtnContainer'}>
-                    <FaChevronUp onClick={e => handlePositionChange(-1)}/>
-                    <FaChevronDown onClick={e => handlePositionChange(1)}/>
-                </div>
                 <div className={item.displayEdit || item.done ? 'hide': ''}>
                     <FaEdit
                         className={'actionBtn editBtn'}

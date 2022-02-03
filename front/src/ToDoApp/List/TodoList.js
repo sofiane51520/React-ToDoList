@@ -28,7 +28,7 @@ const TodoList = (id) => {
 
     const addItem = async () => {
         if(!item.length){
-            alert('Ajoute du contenu batard')
+            alert('Ajoute du contenu batard !')
             return
         }
         await axios
@@ -76,14 +76,14 @@ const TodoList = (id) => {
         if (item.position + posDiff < 0 || item.position + posDiff > tasks.length - 1)
             return
         let newTasks = [...tasks]
-        let temp = Object.create(newTasks[item.position + posDiff])
+        let temp = newTasks[item.position + posDiff]
 
         item.position += posDiff
         temp.position -= posDiff
 
         newTasks[item.position] = item
         newTasks[temp.position] = temp
-        //TODO Refactor too much calls
+        //TODO Refactor too many calls
         editItem(newTasks[item.position])
         editItem(newTasks[temp.position])
 

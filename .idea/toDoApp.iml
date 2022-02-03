@@ -92,7 +92,6 @@
       <excludeFolder url="file://$MODULE_DIR$/back/vendor/symfony/cache-contracts" />
       <excludeFolder url="file://$MODULE_DIR$/back/vendor/friendsofphp/proxy-manager-lts" />
       <excludeFolder url="file://$MODULE_DIR$/back/vendor/laminas/laminas-code" />
-      <excludeFolder url="file://$MODULE_DIR$/back/vendor/laminas/laminas-zendframework-bridge" />
       <excludeFolder url="file://$MODULE_DIR$/back/vendor/twig/extra-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/back/vendor/twig/twig" />
       <excludeFolder url="file://$MODULE_DIR$/back/vendor/psr/container" />
@@ -107,7 +106,17 @@
       <excludeFolder url="file://$MODULE_DIR$/back/vendor/nelmio/cors-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/back/vendor/fig/link-util" />
       <excludeFolder url="file://$MODULE_DIR$/back/vendor/psr/log" />
-      <excludeFolder url="file://$MODULE_DIR$/back/vendor/laminas/laminas-eventmanager" />
+      <excludeFolder url="file://$MODULE_DIR$/back/vendor/symfony/polyfill-php81" />
+      <excludeFolder url="file://$MODULE_DIR$/back/vendor/guzzlehttp/psr7" />
+      <excludeFolder url="file://$MODULE_DIR$/back/vendor/guzzlehttp/guzzle" />
+      <excludeFolder url="file://$MODULE_DIR$/back/vendor/guzzlehttp/promises" />
+      <excludeFolder url="file://$MODULE_DIR$/back/vendor/auth0/jwt-auth-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/back/vendor/psr/http-message" />
+      <excludeFolder url="file://$MODULE_DIR$/back/vendor/auth0/auth0-php" />
+      <excludeFolder url="file://$MODULE_DIR$/back/vendor/psr/simple-cache" />
+      <excludeFolder url="file://$MODULE_DIR$/back/vendor/auth0/php-jwt" />
+      <excludeFolder url="file://$MODULE_DIR$/back/vendor/psr/http-client" />
+      <excludeFolder url="file://$MODULE_DIR$/back/vendor/ralouphie/getallheaders" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
